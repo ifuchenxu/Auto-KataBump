@@ -1,3 +1,15 @@
+console.log('TOKEN:', process.env.TG_BOT_TOKEN ? 'YES' : 'NO');
+console.log('CHAT_ID:', process.env.TG_CHAT_ID ? 'YES' : 'NO');
+
+if (process.env.TG_BOT_TOKEN && process.env.TG_CHAT_ID) {
+    const https = require('https');
+    const url = `https://api.telegram.org/bot${process.env.TG_BOT_TOKEN}/sendMessage?chat_id=${process.env.TG_CHAT_ID}&text=Test`;
+    https.get(url, (res) => {
+        console.log('Telegram test status:', res.statusCode);
+    }).on('error', (e) => {
+        console.log('Telegram error:', e.message);
+    });
+}
 const { chromium } = require('playwright-extra');
 const stealth = require('puppeteer-extra-plugin-stealth')();
 const axios = require('axios');
