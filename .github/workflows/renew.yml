@@ -39,6 +39,11 @@ jobs:
       run: |
         npm install
 
+    - name: Debug Telegram
+      run: |
+        echo "TG_BOT_TOKEN set: ${{ secrets.TG_BOT_TOKEN != '' }}"
+        echo "TG_CHAT_ID set: ${{ secrets.TG_CHAT_ID != '' }}"
+        echo "CHAT_ID value: ${{ secrets.TG_CHAT_ID }}"
     - name: Run Renew Script
       env:
         # 将 USERS_JSON 配置在 GitHub Repository Secrets 中
